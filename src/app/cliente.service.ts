@@ -28,6 +28,11 @@ export class ClienteService {
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
 
+  buscarClientePorId(id: string) : Cliente | undefined {
+    const cliente = this.obterStorage();
+    return cliente.find(cliente => cliente.id == id);
+  }
+
   private obterStorage() : Cliente[] {
     const repositorioClientes = localStorage.getItem(ClienteService.REPO_CLIENTES)
     if(repositorioClientes) {
