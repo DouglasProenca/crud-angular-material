@@ -10,8 +10,15 @@ export class ClienteService {
 
   constructor() { }
 
-  pesquisarClientes(nome: string) : Cliente[] {
-    return this.obterStorage();
+  pesquisarClientes(nomeBusca: string) : Cliente[] {
+    const cliente = this.obterStorage();
+    
+    if(!nomeBusca){
+      return this.obterStorage();
+    }
+  
+    
+    return cliente.filter(cliente => cliente.nome?.indexOf(nomeBusca) !== -1);
   }
 
   salvar(cliente: Cliente) {
