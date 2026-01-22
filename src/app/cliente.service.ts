@@ -10,8 +10,8 @@ export class ClienteService {
 
   constructor() { }
 
-  pesquisarClientes(cliente: string) : Cliente[] {
-    return [];
+  pesquisarClientes(nome: string) : Cliente[] {
+    return this.obterStorage();
   }
 
   salvar(cliente: Cliente) {
@@ -21,7 +21,7 @@ export class ClienteService {
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
 
-  obterStorage() : Cliente[] {
+  private obterStorage() : Cliente[] {
     const repositorioClientes = localStorage.getItem(ClienteService.REPO_CLIENTES)
     if(repositorioClientes) {
       const clientes: Cliente[] = JSON.parse(repositorioClientes);
