@@ -28,10 +28,21 @@ export class ClienteService {
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
 
+  atualizar(cliente: Cliente) {
+    const storage = this.obterStorage();
+    storage.forEach(c => {
+      if(c.id === cliente.id) {
+        Object.assign(c, cliente);
+        localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
+      }
+    });
+  }
+
   buscarClientePorId(id: string) : Cliente | undefined {
     const cliente = this.obterStorage();
     return cliente.find(cliente => cliente.id == id);
   }
+
 
   private obterStorage() : Cliente[] {
     const repositorioClientes = localStorage.getItem(ClienteService.REPO_CLIENTES)
