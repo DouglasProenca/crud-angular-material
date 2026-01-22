@@ -10,6 +10,10 @@ export class ClienteService {
 
   constructor() { }
 
+  pesquisarClientes(cliente: string) : Cliente[] {
+    return [];
+  }
+
   salvar(cliente: Cliente) {
     const storage = this.obterStorage();
     storage.push(cliente);
