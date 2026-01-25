@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms'
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';  
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,8 +20,10 @@ import { ActivatedRoute, Router } from '@angular/router';
             MatFormFieldModule, 
             MatInputModule, 
             MatIconModule, 
-            MatButtonModule
+            MatButtonModule,
+            NgxMaskDirective
           ],
+  providers: [provideNgxMask()],        
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })
