@@ -38,6 +38,14 @@ export class ClienteService {
     });
   }
 
+  deletar(cliente: Cliente){
+    const storage = this.obterStorage();
+
+    const novaLista = storage.filter(c => cliente.id !== c.id); 
+
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(novaLista));
+  }
+
   buscarClientePorId(id: string) : Cliente | undefined {
     const cliente = this.obterStorage();
     return cliente.find(cliente => cliente.id == id);

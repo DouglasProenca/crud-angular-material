@@ -40,11 +40,21 @@ export class ConsultaComponent implements OnInit {
     this.route.navigate(['/cadastro'],{queryParams: {"id": id}});
   }
 
+  preparaDeletar(cliente: Cliente){
+    cliente.deletando = true;
+  }
+
   pesquisar(){
     this.listaClientes = this.service.pesquisarClientes(this.nomeBusca);
+  }
+
+  deletar (cliente: Cliente){
+    this.service.deletar(cliente);
+    this.ngOnInit();
   }
 
   ngOnInit() {
     this.listaClientes = this.service.pesquisarClientes('');
   }
+
 }
