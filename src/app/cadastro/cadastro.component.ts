@@ -5,8 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
-import { FormsModule } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms'
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';  
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +25,8 @@ import { Estado, Municipio } from '../brasilapi.models';
             MatInputModule, 
             MatIconModule, 
             MatButtonModule,
-            NgxMaskDirective
+            NgxMaskDirective,
+            MatSelectModule
           ],
   providers: [provideNgxMask()],        
   templateUrl: './cadastro.component.html',
