@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms'
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';  
@@ -72,6 +72,14 @@ export class CadastroComponent implements OnInit {
     });
   }
 
+  carregarMunicipios(event: MatSelectChange){
+    const ufSelecionada = event.value;
+    this.brasilApiService.listarMunicipios(ufSelecionada).subscribe({
+      next: listaMunicipios => this.municipios = listaMunicipios,
+      error: erro => console.log("ocorreu um erro", erro)
+    });
+  }
+
   ngOnInit(): void {
     this.route.queryParamMap.subscribe( (query: any) => {
        const params = query['params'];
@@ -81,6 +89,10 @@ export class CadastroComponent implements OnInit {
          if(clienteEncontrado){
             this.atualizando = true;
             this.cliente = clienteEncontrado;
+            if(this.cliente.uf){
+              const event = { value: this.cliente.uf }
+              this.carregarMunicipios(event as MatSelectChange);
+            }
          } 
        }
     })

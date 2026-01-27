@@ -7,6 +7,7 @@ export class Cliente {
     dataNascimento?: string;
     email?: string;
     uf?: string;
+    municipio?: string;
     deletando: boolean = false;
 
     static newCliente(){
