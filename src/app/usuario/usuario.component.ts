@@ -28,7 +28,16 @@ export class UsuarioComponent {
   }
 
   salvar(){
-    console.log('valores digitados:', this.camposForm.value)
-    console.log('Está valido:', this.camposForm.valid)
+    this.camposForm.markAsTouched();
+
+    if(this.camposForm.valid) {
+      console.log('valores digitados:', this.camposForm.value)
+      console.log('Está valido:', this.camposForm.valid)
+    }
+  }
+
+  isCampoInvalido(nomeCampo: string) : boolean {
+    const campo = this.camposForm.get(nomeCampo);
+    return campo?.invalid && campo?.touched && campo?.errors?.['required']
   }
 }

@@ -15,6 +15,9 @@
                                        formControlName="nome"
                                        placeholder="Ex: José da Silva" matInput>
                             </mat-form-field>
+                            @if (isCampoInvalido('nome')) {
+                                <mat-error>Campo obrigatório</mat-error>
+                            }
                         </div>
                     </div>   
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
@@ -26,6 +29,9 @@
                                        formControlName="senha"
                                        placeholder="Digite sua senha" matInput>
                             </mat-form-field>
+                            @if (isCampoInvalido('senha')) {
+                                <mat-error>Campo obrigatório</mat-error>
+                            }
                         </div>
                     </div>
 
