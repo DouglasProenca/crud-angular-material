@@ -1,9 +1,19 @@
 {
-    "usuarios": [
-        {
-          "id": "1",
-          "nome": "admin",
-          "senha": "password"
-        }
-    ]
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "admin",
+      "senha": "password"
+    },
+    {
+      "id": "e340",
+      "nome": "teste1",
+      "senha": "1234"
+    },
+    {
+      "id": "8bbe",
+      "nome": "laio",
+      "senha": "nome"
+    }
+  ]
 }

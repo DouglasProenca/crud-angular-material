@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { Usuario } from './usuario'
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -20,7 +21,7 @@ export class UsuarioComponent {
   camposForm: FormGroup;
   atualizando: boolean = false;
 
-  constructor(){
+  constructor(private service: UsuarioService){
     this.camposForm = new FormGroup({
       nome: new FormControl('', Validators.required),
       senha: new FormControl('', Validators.required),
@@ -33,6 +34,13 @@ export class UsuarioComponent {
     if(this.camposForm.valid) {
       console.log('valores digitados:', this.camposForm.value)
       console.log('Está valido:', this.camposForm.valid)
+      this.service.salvar(this.camposForm.value).subscribe({
+        next: usuario => { 
+          console.log('Usuário Cadastrado:', usuario)
+          this.camposForm.reset();
+        },
+        error: erro => console.error('deu erro!',erro)
+      })
     }
   }
 
